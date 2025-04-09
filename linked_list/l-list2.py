@@ -60,10 +60,13 @@ class MyLinkedList(object):
         self.length += 1
 
     def addAtIndex(self, index, val):
+        if  index < 0 or index > self.length - 1:
+            return
         node = ListNode(val)
         if index == 0:
             node.next = self.head
             self.head = node
+            self.length += 1
             return
 
         cur = self.head
@@ -81,6 +84,7 @@ class MyLinkedList(object):
             return
         if index == 0:
             self.head = self.head.next
+            self.length -= 1
             return
 
         cur = self.head
@@ -92,18 +96,16 @@ class MyLinkedList(object):
             cur.next = cur.next.next
         else:
             cur.next = None
+        self.length -= 1
+
+
 
 
 lst1 = MyLinkedList()
-
-lst1.addAtHead(1)
 lst1.addAtHead(2)
-lst1.addAtHead(3)
-lst1.get(1)
-lst1.deleteAtIndex(2)
-lst1.deleteAtIndex(3)
-lst1.deleteAtIndex(0)
-lst1.addAtIndex(0, 5)
-
+lst1.addAtTail(3)
+lst1.addAtIndex(3, 2)
 lst1.showList(lst1.head)
+print(lst1.get(1))
+
 
