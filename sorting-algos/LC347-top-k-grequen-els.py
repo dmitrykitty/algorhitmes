@@ -1,5 +1,6 @@
 import heapq
 
+
 def topKFrequent_0_to_100(nums, k: int):
     max_val = nums[0]
     for i in range(1, len(nums)):
@@ -17,6 +18,12 @@ def topKFrequent_0_to_100(nums, k: int):
     return res
 
 
-
-lst = [1,1,1,2,2,3]
+lst = [1, 1, 1, 2, 2, 3]
 print(topKFrequent_0_to_100(lst, 2))
+
+
+# def topKFrequent(nums, k):
+#     ar = [0] * len(nums)
+#     d = { i: [] for i in range(len(nums))}
+#     for num in nums:
+
