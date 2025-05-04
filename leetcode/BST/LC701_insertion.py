@@ -31,3 +31,4 @@ def insertIntoBST2(root, val):
         root.right = insertIntoBST2(root.right, val)
 
     return root
+
