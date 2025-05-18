@@ -7,7 +7,6 @@ import sys
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
-        self.next = next
 
 
 class MyLinkedList(object):
@@ -46,6 +45,10 @@ class MyLinkedList(object):
             return
 
         self.length += 1
+        if index == 0:
+            temp = self.head
+            self.head = ListNode(val, temp)
+            return
 
         cur = self.head
         for i in range(index - 1):
@@ -53,24 +56,22 @@ class MyLinkedList(object):
         temp = cur.next
         cur.next = ListNode(val, temp)
 
+
     def deleteAtIndex(self, index):
-        if index < 0 or index > self.length - 1:
+        if index < 0 or index >= self.length:
             return
+
+        self.length -= 1
         if index == 0:
             self.head = self.head.next
-            self.length -= 1
             return
 
         cur = self.head
-        counter = 0
-        while cur.next and counter < index - 1:
+        for i in range(index - 1):
             cur = cur.next
-            counter += 1
-        if cur.next.next:
-            cur.next = cur.next.next
-        else:
-            cur.next = None
-        self.length -= 1
+
+        cur.next = cur.next.next
+
 
 
 lst1 = MyLinkedList()
